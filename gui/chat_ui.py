@@ -2,7 +2,9 @@ import tkinter as tk
 from encryption.aes_utils import generate_key, encrypt_message, decrypt_message
 
 # Generate AES key
-key = generate_key()
+from encryption.aes_utils import load_key_from_file
+key = load_key_from_file()
+
 
 # Tkinter setup
 window = tk.Tk()

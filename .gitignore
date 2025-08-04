@@ -16,3 +16,4 @@ venv/
 
 # VS Code settings (optional)
 .vscode/
+secret.key
