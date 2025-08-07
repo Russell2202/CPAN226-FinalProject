@@ -1,10 +1,10 @@
 ## Features
 
-- **AES-256 Encryption**: All messages are encrypted using Fernet (AES-256 in CBC mode)
+- **AES-256 Encryption**: All messages are encrypted using Fernet
 - **GUI**: Interface built with Tkinter
 - **Real-time Messaging**: Instant message delivery with socket networking
-- **Multi-client Support**: Server can handle multiple clients simultaneously
-- **User-friendly**: Easy-to-use interface with connection status indicators
+- **Multi-client Support**: Server can handle multiple clients at the same time
+- **User-friendly**: Interface with connection status indicators
 - **Color-coded Messages**: Different colors for sent, received, and system messages
 
 
@@ -62,7 +62,7 @@ python gui/chat_ui.py
 ### Technical Details
 
 ### Encryption
-- Uses **Fernet** (AES-256 in CBC mode with PKCS7 padding)
+- Uses **Fernet** 
 - Keys are automatically generated and stored in `secret.key`
 - All messages are encrypted before transmission
 
@@ -73,19 +73,8 @@ python gui/chat_ui.py
 - **Multi-client**: Server supports multiple simultaneous connections
 
 ### GUI Framework
-- **Framework**: Tkinter (Python's standard GUI library)
+- **Framework**: Tkinter 
 - **Design**: Modern flat design with custom colors
-- **Responsive**: Auto-scrolling chat display
-- **User Experience**: Intuitive controls and status indicators
-
-
-### Adding New Features
-1. **New Message Types**: Modify the `add_message()` method in `chat_ui.py`
-2. **Custom Encryption**: Extend the `aes_utils.py` module
-3. **Server Features**: Add methods to the `ChatServer` class in `server.py`
-
-### Testing
-1. Start the server: `python run_chat.py server`
-2. Start multiple clients: `python run_chat.py client` (in different terminals)
-3. Send messages between clients to test encryption and networking
+- **Responsive**: Auto scrolling chat display
+- **User Experience**: Simple to understand controls and status indicators
 
