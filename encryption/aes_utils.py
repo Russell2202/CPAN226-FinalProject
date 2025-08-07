@@ -1,31 +1,18 @@
-from cryptography.fernet import Fernet  # Import Fernet for AES encryption/decryption
+from cryptography.fernet import Fernet  
 import os 
-# ================================
-# ===        KEY HANDLING      ===
-# ================================
 
 def generate_key():
-    """
-    Generates a new AES key using Fernet.
-    Fernet uses 128-bit AES in CBC mode with PKCS7 padding and HMAC.
-    """
+    #Generates a new AES key using Fernet.
     return Fernet.generate_key()
 
 
 def save_key_to_file(key: bytes, filename="secret.key"):
-    """
-    Saves the given key to a local file (default: 'secret.key').
-    This allows the same key to be reused across sessions.
-    """
+    #Save key to a local file (secret.key)
     with open(filename, "wb") as f:
         f.write(key)
 
 
 def load_key_from_file(filename="secret.key") -> bytes:
-    """
-    Loads the encryption key from a file. If the file does not exist,
-    it will generate a new key, save it, and then return it.
-    """
     if not os.path.exists(filename):
         # If the key file doesn't exist, create one
         key = generate_key()
@@ -36,23 +23,14 @@ def load_key_from_file(filename="secret.key") -> bytes:
     with open(filename, "rb") as f:
         return f.read()
 
-# ================================
-# === ENCRYPTION / DECRYPTION  ===
-# ================================
-
 def encrypt_message(message: str, key: bytes) -> bytes:
-    """
-    Encrypts a message string using the provided AES key.
-    Returns encrypted data in bytes.
-    """
+    #Encrypt message using provided AES Key
     fernet = Fernet(key)
-    return fernet.encrypt(message.encode())  # Convert string to bytes before encrypting
+    return fernet.encrypt(message.encode())  
 
 
 def decrypt_message(encrypted: bytes, key: bytes) -> str:
-    """
-    Decrypts an encrypted message using the provided AES key.
-    Returns the original plaintext message as a string.
-    """
+
+    #Decrypt message using AES key
     fernet = Fernet(key)
-    return fernet.decrypt(encrypted).decode()  # Convert bytes back to string
+    return fernet.decrypt(encrypted).decode()  

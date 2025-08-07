@@ -5,7 +5,7 @@ import sys
 import os
 from datetime import datetime
 
-# Add the parent directory to the path so we can import encryption module
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from encryption.aes_utils import load_key_from_file, decrypt_message, encrypt_message
@@ -32,7 +32,7 @@ class ChatServer:
         
         # Start listening for incoming connections
         self.server_socket.listen(5)
-        print(f"🔐 Secure Chat Server listening on {self.HOST}:{self.PORT}...")
+        print(f"Secure Chat Server listening on {self.HOST}:{self.PORT}...")
         print("Waiting for clients to connect...")
         
     def start(self):
@@ -40,7 +40,7 @@ class ChatServer:
             while True:
                 # Wait for a client to connect
                 conn, addr = self.server_socket.accept()
-                print(f"✅ New client connected from {addr}")
+                print(f"New client connected from {addr}")
                 
                 # Add client to list
                 with self.client_lock:
@@ -51,7 +51,7 @@ class ChatServer:
                 client_thread.start()
                 
         except KeyboardInterrupt:
-            print("\n🛑 Server shutting down...")
+            print("\nServer shutting down...")
         finally:
             self.cleanup()
     
@@ -68,24 +68,24 @@ class ChatServer:
                     # Try to decrypt the received data using AES
                     decrypted = decrypt_message(data, self.key)
                     timestamp = datetime.now().strftime("%H:%M:%S")
-                    print(f"[{timestamp}] 📨 Message from {addr}: {decrypted}")
+                    print(f"[{timestamp}]Message from {addr}: {decrypted}")
                     
                     # Echo the message back to all clients
                     self.broadcast_message(decrypted, conn)
                     
                 except Exception as e:
                     # Catch any decryption errors
-                    print(f"❌ Error decrypting message from {addr}: {e}")
+                    print(f"Error decrypting message from {addr}: {e}")
                     
         except Exception as e:
-            print(f"❌ Client {addr} error: {e}")
+            print(f"Client {addr} error: {e}")
         finally:
             # Remove client from list
             with self.client_lock:
                 self.clients = [(c, a) for c, a in self.clients if c != conn]
             
             conn.close()
-            print(f"👋 Client {addr} disconnected")
+            print(f"Client {addr} disconnected")
     
     def broadcast_message(self, message, sender_conn):
         """Send message to all connected clients except sender"""
@@ -93,17 +93,16 @@ class ChatServer:
         
         with self.client_lock:
             for conn, addr in self.clients:
-                if conn != sender_conn:  # Don't send back to sender
+                if conn != sender_conn:  
                     try:
                         conn.sendall(encrypted)
                     except Exception as e:
-                        print(f"❌ Failed to send to {addr}: {e}")
+                        print(f"Failed to send to {addr}: {e}")
                         # Remove failed client
                         self.clients = [(c, a) for c, a in self.clients if c != conn]
     
     def cleanup(self):
-        """Clean up server resources"""
-        print("🧹 Cleaning up server resources...")
+        print("Cleaning up server resources...")
         
         # Close all client connections
         with self.client_lock:
@@ -120,7 +119,7 @@ class ChatServer:
         except:
             pass
         
-        print("✅ Server cleanup complete")
+        print("Server cleanup complete")
 
 if __name__ == "__main__":
     server = ChatServer()

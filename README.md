@@ -5,7 +5,6 @@
 - **Real-time Messaging**: Instant message delivery with socket networking
 - **Multi-client Support**: Server can handle multiple clients simultaneously
 - **User-friendly**: Easy-to-use interface with connection status indicators
-- **Background Threading**: Non-blocking message reception
 - **Color-coded Messages**: Different colors for sent, received, and system messages
 
 
