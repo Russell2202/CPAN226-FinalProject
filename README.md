@@ -8,17 +8,9 @@
 - **Color-coded Messages**: Different colors for sent, received, and system messages
 
 
-### Prerequisites
-
-Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 ### Running the Application
 
-#### Option 1: Use the Launcher (Recommended)
+#### Option 1: Use the Launcher 
 ```bash
 # Start both server and client
 python run_chat.py both
@@ -30,16 +22,11 @@ python run_chat.py client
 
 #### Option 2: Manual Start
 ```bash
-# Terminal 1: Start the server
+
 python server/server.py
 
-# Terminal 2: Start the client GUI
 python gui/chat_ui.py
 ```
-### Starting the Server
-1. Run the server first using one of the methods above
-2. The server will listen on `127.0.0.1:5001`
-3. You will see connection status and incoming messages in the terminal
 
 ### Using the Client GUI
 1. Launch the client GUI
