@@ -271,7 +271,7 @@ class ChatClient:
                     self.add_message(username, message, "received")
                 
             except Exception as e:
-                if self.connected:  # Only show error if we're still supposed to be connected
+                if self.connected:  
                     self.root.after(0, lambda: messagebox.showerror("Receive Error", f"Connection lost: {str(e)}"))
                     self.root.after(0, self.disconnect_from_server)
                 break
@@ -281,13 +281,13 @@ class ChatClient:
         
         # Color coding based on message type
         if msg_type == "sent":
-            color = "#2980b9"  # Blue for sent messages
+            color = "#2980b9"  
             prefix = "➤"
         elif msg_type == "received":
-            color = "#27ae60"  # Green for received messages
+            color = "#27ae60"  
             prefix = "◀"
         else:
-            color = "#7f8c8d"  # Gray for system messages
+            color = "#7f8c8d"  
             prefix = "ℹ"
         
         formatted_message = f"[{timestamp}] {prefix} {sender}: {message}\n"
