@@ -18,7 +18,7 @@ class ChatClient:
         self.key = load_key_from_file()
         
         # Network settings
-        self.HOST = '127.0.0.1'
+        self.HOST = '10.0.0.75'
         self.PORT = 5001
         self.client_socket = None
         self.connected = False
@@ -28,7 +28,6 @@ class ChatClient:
         self.setup_gui()
         
     def create_styled_button(self, parent, text, command, bg_color='white', fg_color='black'):
-        """Create a clean button with white background and black text"""
         button = tk.Button(
             parent,
             text=text,
@@ -49,7 +48,7 @@ class ChatClient:
     def setup_gui(self):
         # Main window
         self.root = tk.Tk()
-        self.root.title("🔐 Secure Chat Client")
+        self.root.title("Secure Chat Client")
         self.root.geometry("800x600")
         self.root.configure(bg='#2c3e50')
         
@@ -68,7 +67,7 @@ class ChatClient:
         
         # Title
         title_label = tk.Label(main_frame, 
-                              text="🔐 Secure Chat Client", 
+                              text="Secure Chat Client", 
                               font=('Arial', 18, 'bold'),
                               bg='#2c3e50', 
                               fg='#ecf0f1')

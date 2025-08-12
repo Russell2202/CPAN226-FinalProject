@@ -5,20 +5,6 @@ import threading
 import time
 import os
 
-def print_banner():
-    banner = """
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                      SECURE CHAT APP                         ║
-    ║                                                              ║
-    ║  Features:                                                   ║
-    ║  • AES-256 Encryption                                        ║
-    ║  • Real-time messaging                                       ║                                                    
-    ║  • Multi-client support                                      ║
-    ║                                                              ║
-    ╚══════════════════════════════════════════════════════════════╝
-    """
-    print(banner)
-
 def start_server():
 
     print("Starting Secure Chat Server...")
@@ -63,7 +49,6 @@ def start_both():
     start_client()
 
 def main():
-    print_banner()
     
     if len(sys.argv) != 2:
         print("Usage:")

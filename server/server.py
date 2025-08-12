@@ -16,7 +16,7 @@ class ChatServer:
         self.key = load_key_from_file()
         
         # Server configuration
-        self.HOST = '127.0.0.1'  
+        self.HOST = '0.0.0.0'  
         self.PORT = 5001
         
         # Client management
