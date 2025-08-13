@@ -56,7 +56,7 @@ class ChatServer:
             self.cleanup()
     
     def handle_client(self, conn, addr):
-        """Handle individual client connection"""
+       
         try:
             while True:
                 # Wait to receive encrypted data from the client
@@ -88,7 +88,7 @@ class ChatServer:
             print(f"Client {addr} disconnected")
     
     def broadcast_message(self, message, sender_conn):
-        """Send message to all connected clients except sender"""
+        # Broadcast message to all clients 
         encrypted = encrypt_message(message, self.key)
         
         with self.client_lock:

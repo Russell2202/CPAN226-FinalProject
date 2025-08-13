@@ -11,7 +11,8 @@ from encryption.aes_utils import load_key_from_file, encrypt_message
 key = load_key_from_file()
 
 # Server address 
-HOST = '127.0.0.1'  
+#Match server IP
+HOST = '100.96.82.44'  
 PORT = 5001        
 
 # Create a TCP socket

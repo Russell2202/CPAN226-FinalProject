@@ -18,7 +18,8 @@ class ChatClient:
         self.key = load_key_from_file()
         
         # Network settings
-        self.HOST = '10.0.0.75'
+        #Match server IP
+        self.HOST = '100.96.82.44'
         self.PORT = 5001
         self.client_socket = None
         self.connected = False
